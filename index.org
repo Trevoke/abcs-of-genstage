@@ -1,0 +1,29 @@
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t reveal_title_slide:nil reveal_slide_number:nil reveal_progress:t reveal_history:t reveal_center:t reveal_single_file:t
+#+REVEAL_THEME: solarized
+#+REVEAL_ROOT: ../../vendor/reveal.js
+
+* ABCs of GenStage
+** Wadsworth's constant
+- Aldric
+- Exeq
+** Learning objectives
+- Explain what GenStage is
+- Decide whether or not to use GenStage
+- Set up a GenStage pipeline
+* Mindset: "Flow of data"
+And further: flow of data processing
+* The ol' =Stream=
+Literally, a stream of data
+* Distributing work with stdlib
+=Task.async_stream/3= (and =/5=)
+** One pic == 1k words
+[[./images/async_stream.png]]
+** Limitations
+- Stream
+- One function
+* Pub/sub
+Publish / subscribe
+* Setting the stage (rimshot)
+** Let me explain. No, there is too much. Let me sum up.
+[[./images/pipeline-definitions.png]]
+* Backpressure
