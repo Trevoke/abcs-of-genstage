@@ -21,9 +21,75 @@ Literally, a stream of data
 ** Limitations
 - Stream
 - One function
+** An example
+Use an external reverse geocoding service to get addresses from coordinates
+* How can we extend this idea?
+We want to make it scalable!
+
+The new old buzzword.
 * Pub/sub
 Publish / subscribe
 * Setting the stage (rimshot)
 ** Let me explain. No, there is too much. Let me sum up.
 [[./images/pipeline-definitions.png]]
 * Backpressure
+- Consumers ask for data
+- i.e. Producers produce on-demand /ONLY/.
+* Okay, some code now
+* Empty producer
+#+BEGIN_SRC elixir
+  defmodule Producer do
+    use GenStage
+    def start_link(), do: GenStage.start_link(__MODULE__, :ok)
+
+    def init(:ok), do: {:producer, %{}}
+
+    def handle_demand(demand, state) when demand > 0 do
+      # calculate what we can return
+      {events_to_produce, new_state} = magic(demand, state)
+      {:noreply, events_to_produce, new_state}
+    end
+
+    defp magic(demand, state) do
+      # Pay no attention to the man behind the curtain
+    end
+  end
+#+END_SRC
+* Producer-Consumer
+#+BEGIN_SRC elixir
+  defmodule ProducerConsumer do
+    use GenStage
+    def start_link(), do: GenStage.start_link(__MODULE__, :ok)
+
+    def init(:ok), do: {:producer_consumer, %{}}
+
+    def handle_events(events, _from, state) do
+      # Do something with the events
+      new_events = magic(events)
+      {:noreply, new_events, state}
+    end
+
+    defp magic(events) do
+      # Pay no attention to the man behind the curtain
+    end
+  end
+#+END_SRC
+* Consumer
+#+BEGIN_SRC elixir
+  defmodule Consumer do
+    use GenStage
+    def start_link(), do: GenStage.start_link(__MODULE__, :ok)
+
+    def init(:ok), do: {:consumer, :something_has_to_be_the_state}
+
+    def handle_events(events, _from, _state) do
+      # Do something with the events
+      _final_step = magic(events)
+      # Have to return an empty list
+      {:noreply, [], state}
+    end
+
+    defp magic(events) do
+      # Pay no attention to the man behind the curtain
+    end
+#+END_SRC

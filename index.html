@@ -1844,21 +1844,21 @@ body {
 <div class="slides">
 
 <section>
-<section id="slide-orgf30cf66">
-<h2 id="orgf30cf66">ABCs of GenStage</h2>
-<div class="outline-text-2" id="text-orgf30cf66">
+<section id="slide-org94d68ed">
+<h2 id="org94d68ed">ABCs of GenStage</h2>
+<div class="outline-text-2" id="text-org94d68ed">
 </div>
 </section>
-<section id="slide-orgd88d605">
-<h3 id="orgd88d605">Wadsworth's constant</h3>
+<section id="slide-org5877db6">
+<h3 id="org5877db6">Wadsworth's constant</h3>
 <ul>
 <li>Aldric</li>
 <li>Exeq</li>
 
 </ul>
 </section>
-<section id="slide-org7770a0a">
-<h3 id="org7770a0a">Learning objectives</h3>
+<section id="slide-org0b9a44c">
+<h3 id="org0b9a44c">Learning objectives</h3>
 <ul>
 <li>Explain what GenStage is</li>
 <li>Decide whether or not to use GenStage</li>
@@ -1868,30 +1868,30 @@ body {
 </section>
 </section>
 <section>
-<section id="slide-org3a73dc5">
-<h2 id="org3a73dc5">Mindset: "Flow of data"</h2>
+<section id="slide-orge98cd3b">
+<h2 id="orge98cd3b">Mindset: "Flow of data"</h2>
 <p>
 And further: flow of data processing
 </p>
 </section>
 </section>
 <section>
-<section id="slide-org0e1c533">
-<h2 id="org0e1c533">The ol' <code>Stream</code></h2>
+<section id="slide-org8343f4f">
+<h2 id="org8343f4f">The ol' <code>Stream</code></h2>
 <p>
 Literally, a stream of data
 </p>
 </section>
 </section>
 <section>
-<section id="slide-orgecb0415">
-<h2 id="orgecb0415">Distributing work with stdlib</h2>
+<section id="slide-org8281946">
+<h2 id="org8281946">Distributing work with stdlib</h2>
 <p>
 <code>Task.async_stream/3</code> (and <code>/5</code>)
 </p>
 </section>
-<section id="slide-org91af22c">
-<h3 id="org91af22c">One pic == 1k words</h3>
+<section id="slide-org6ef2aac">
+<h3 id="org6ef2aac">One pic == 1k words</h3>
 
 <div class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAFVCAYAAADCAXWmAAAKBmlDQ1BJQ0MgUHJvZmlsZQAASImF
@@ -2574,31 +2574,49 @@ QS8O68wpEUgEEoFBCPwHr2fFwhFnZdEAAAAASUVORK5CYII=" />
 </p>
 </div>
 </section>
-<section id="slide-orgc50e69b">
-<h3 id="orgc50e69b">Limitations</h3>
+<section id="slide-orge1fcc7f">
+<h3 id="orge1fcc7f">Limitations</h3>
 <ul>
 <li>Stream</li>
 <li>One function</li>
 
 </ul>
 </section>
+<section id="slide-org4899cf2">
+<h3 id="org4899cf2">An example</h3>
+<p>
+Use an external reverse geocoding service to get addresses from coordinates
+</p>
+</section>
 </section>
 <section>
-<section id="slide-org534e2eb">
-<h2 id="org534e2eb">Pub/sub</h2>
+<section id="slide-org0b90a36">
+<h2 id="org0b90a36">How can we extend this idea?</h2>
+<p>
+We want to make it scalable!
+</p>
+
+<p>
+The new old buzzword.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org36e0cc8">
+<h2 id="org36e0cc8">Pub/sub</h2>
 <p>
 Publish / subscribe
 </p>
 </section>
 </section>
 <section>
-<section id="slide-org6775ee4">
-<h2 id="org6775ee4">Setting the stage (rimshot)</h2>
-<div class="outline-text-2" id="text-org6775ee4">
+<section id="slide-org38cc7cf">
+<h2 id="org38cc7cf">Setting the stage (rimshot)</h2>
+<div class="outline-text-2" id="text-org38cc7cf">
 </div>
 </section>
-<section id="slide-org411b04b">
-<h3 id="org411b04b">Let me explain. No, there is too much. Let me sum up.</h3>
+<section id="slide-org8d426c5">
+<h3 id="org8d426c5">Let me explain. No, there is too much. Let me sum up.</h3>
 
 <div class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgkAAAEcCAYAAABNkSdNAAAKBmlDQ1BJQ0MgUHJvZmlsZQAASImF
@@ -3122,8 +3140,48 @@ JZs1KhUIBAKBQCAQCPQfgSAJ/ccwcggEAoFAIBAIBFoSgSAJLdmsUalAIBAIBAKBQKD/CPw/Xoym
 </section>
 </section>
 <section>
-<section id="slide-orge88377f">
-<h2 id="orge88377f">Backpressure</h2>
+<section id="slide-org29f1667">
+<h2 id="org29f1667">Backpressure</h2>
+<ul>
+<li>Consumers ask for data</li>
+<li>i.e. Producers produce on-demand <i>ONLY</i>.</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org2118d2b">
+<h2 id="org2118d2b">Okay, some code now</h2>
+</section>
+</section>
+<section>
+<section id="slide-org3f38f6f">
+<h2 id="org3f38f6f">First, a template</h2>
+<div class="org-src-container">
+
+<pre  class="src src-elixir"><span style="color: #597bc5;">defmodule</span> <span style="color: #fdb86b;">Consumer</span> <span style="color: #597bc5;">do</span>&#57344;&#57345;&#57345;
+  <span style="color: #597bc5;">use</span> <span style="color: #fdb86b;">GenStage</span>&#57344;&#57345;&#57345;
+&#57344;&#57345;&#57345;
+  <span style="color: #597bc5;">def</span> <span style="color: #f9cf80;">start_link</span>(), <span style="color: #87cefa;">do:</span> <span style="color: #fdb86b;">GenStage</span>.start_link(<span style="color: #71b9f8;">__MODULE__</span>, <span style="color: #87cefa;">:ok</span>)&#57344;&#57345;&#57345;
+&#57344;&#57345;&#57345;
+  <span style="color: #597bc5;">def</span> <span style="color: #f9cf80;">init</span>(<span style="color: #87cefa;">:ok</span>) <span style="color: #597bc5;">do</span>&#57344;&#57345;&#57345;
+    <span style="color: #adadad; font-style: italic;"># </span><span style="color: #adadad; font-style: italic;">A slight abstraction leak here requires us to return something as the state</span>&#57344;&#57345;
+    {<span style="color: #87cefa;">:consumer</span>, <span style="color: #87cefa;">:ok</span>}&#57344;&#57345;&#57345;
+  <span style="color: #597bc5;">end</span>&#57344;&#57345;&#57345;
+&#57344;&#57345;&#57345;
+  <span style="color: #597bc5;">def</span> <span style="color: #f9cf80;">handle_events</span>(cities, <span style="color: #adadad; font-style: italic;">_from</span>, state) <span style="color: #597bc5;">do</span>&#57344;&#57345;&#57345;
+    <span style="color: #c6b8fc;">aggregated_cities</span> = <span style="color: #fdb86b;">Enum</span>.reduce(&#57344;&#57345;&#57345;
+      cities,&#57344;&#57345;&#57345;
+      %{},&#57344;&#57345;&#57345;
+      <span style="color: #597bc5;">fn</span>(city, acc) -&gt; <span style="color: #fdb86b;">Map</span>.update(acc, city, 1, &amp;(&amp;1 + 1)) <span style="color: #597bc5;">end</span>&#57344;&#57345;&#57345;
+    )&#57344;&#57345;&#57345;
+    <span style="color: #fdb86b;">IO</span>.inspect aggregated_cities&#57344;&#57345;&#57345;
+    <span style="color: #adadad; font-style: italic;"># </span><span style="color: #adadad; font-style: italic;">A slight abstraction leak here requires us to return an empty list</span>&#57344;&#57345;&#57345;
+    {<span style="color: #87cefa;">:noreply</span>, [], state}&#57344;&#57345;&#57345;
+  <span style="color: #597bc5;">end</span>&#57344;&#57345;&#57345;
+<span style="color: #597bc5;">end</span>
+</pre>
+</div>
 </section>
 </section>
 </div>
