@@ -31,7 +31,7 @@ The new old buzzword.
 * Pub/sub
 Publish / subscribe
 * Setting the stage (rimshot)
-** Let me explain. No, there is too much. Let me sum up.
+* Let me explain. No, there is too much. Let me sum up.
 [[./images/pipeline-definitions.png]]
 * Backpressure
 - Consumers ask for data
@@ -119,6 +119,7 @@ Built-in:
 - broadcast (send to all)
 - demand (send to highest demand)
 - partition (send to partitions)
+- can create your own
 * Demand
 =:max_demand= and =:min_demand=
 * Automatic vs. manual demand
@@ -128,3 +129,6 @@ Default behavior
 =GenStage.handle_subscribe/4= returns ={:manual, state}=
 
 Trigger more demand with =GenStage.ask/4=
+* ConsumerSupervisor
+Similar to =async_stream=, but for GenStage
+[[./images/simple-genstage.png]]
