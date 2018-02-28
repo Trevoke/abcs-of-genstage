@@ -13,8 +13,9 @@
 * Mindset: "Flow of data"
 And further: flow of data processing
 * The ol' =Stream=
-Literally, a stream of data
+Literally, a stream of data.
 * Distributing work with stdlib
+Great choice if everything is already in memory anyway.
 =Task.async_stream/3= (and =/5=)
 ** One pic == 1k words
 [[./images/async_stream.png]]
@@ -59,7 +60,9 @@ Publish / subscribe
 #+BEGIN_SRC elixir
   defmodule ProducerConsumer do
     use GenStage
-    def start_link(), do: GenStage.start_link(__MODULE__, :ok)
+    def start_link() do
+      GenStage.start_link(__MODULE__, :ok, subscribe_to: [Producer])
+    end
 
     def init(:ok), do: {:producer_consumer, %{}}
 
@@ -78,11 +81,13 @@ Publish / subscribe
 #+BEGIN_SRC elixir
   defmodule Consumer do
     use GenStage
-    def start_link(), do: GenStage.start_link(__MODULE__, :ok)
+    def start_link() do
+      GenStage.start_link(__MODULE__, :ok, subscribe_to: [ProducerConsumer])
+    end
 
     def init(:ok), do: {:consumer, :something_has_to_be_the_state}
 
-    def handle_events(events, _from, _state) do
+    def handle_events(events, _from, state) do
       # Do something with the events
       _final_step = magic(events)
       # Have to return an empty list
@@ -93,3 +98,33 @@ Publish / subscribe
       # Pay no attention to the man behind the curtain
     end
 #+END_SRC
+* Pitfall: callbacks
+All regular runtime callbacks return new events.
+#+BEGIN_SRC elixir
+  def handle_cast(msg, state) do
+    # something
+    {:noreply, new_events, state}
+  end
+
+  def handle_call(msg, from, state) do
+    # something
+    {:reply, reply, new_events, state}
+  end
+#+END_SRC
+* The devil is in the details
+* Dispatchers
+How the producer knows what to do
+
+Built-in:
+- broadcast (send to all)
+- demand (send to highest demand)
+- partition (send to partitions)
+* Demand
+=:max_demand= and =:min_demand=
+* Automatic vs. manual demand
+** Automatic
+Default behavior
+** Manual
+=GenStage.handle_subscribe/4= returns ={:manual, state}=
+
+Trigger more demand with =GenStage.ask/4=
