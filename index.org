@@ -16,7 +16,9 @@ And further: flow of data processing
 Literally, a stream of data.
 * Distributing work with stdlib
 Great choice if everything is already in memory anyway.
-=Task.async_stream/3= (and =/5=)
+
+- =Task.async_stream/3=
+- =Task.async_stream/5=
 ** One pic == 1k words
 [[./images/async_stream.png]]
 ** Limitations
@@ -61,7 +63,10 @@ Publish / subscribe
   defmodule ProducerConsumer do
     use GenStage
     def start_link() do
-      GenStage.start_link(__MODULE__, :ok, subscribe_to: [Producer])
+      GenStage.start_link(
+        __MODULE__,
+        :ok,
+        subscribe_to: [Producer])
     end
 
     def init(:ok), do: {:producer_consumer, %{}}
@@ -82,7 +87,10 @@ Publish / subscribe
   defmodule Consumer do
     use GenStage
     def start_link() do
-      GenStage.start_link(__MODULE__, :ok, subscribe_to: [ProducerConsumer])
+      GenStage.start_link(
+        __MODULE__,
+        :ok,
+        subscribe_to: [ProducerConsumer])
     end
 
     def init(:ok), do: {:consumer, :something_has_to_be_the_state}
@@ -113,13 +121,12 @@ All regular runtime callbacks return new events.
 #+END_SRC
 * The devil is in the details
 * Dispatchers
-How the producer knows what to do
+How the producer knows what to do. Can create your own.
 
 Built-in:
 - broadcast (send to all)
 - demand (send to highest demand)
 - partition (send to partitions)
-- can create your own
 * Demand
 =:max_demand= and =:min_demand=
 * Automatic vs. manual demand
@@ -132,3 +139,21 @@ Trigger more demand with =GenStage.ask/4=
 * ConsumerSupervisor
 Similar to =async_stream=, but for GenStage
 [[./images/simple-genstage.png]]
+* Usage considerations
+#+BEGIN_QUOTE
+As you get familiar with GenStage, you may want to organize your stages according to your business domain. [...] That’s an anti-pattern.
+
+[...]
+
+[U]se processes/stages to model runtime properties, such as concurrency and data-transfer.
+#+END_QUOTE
+* Pipeline example
+- produce ={lat, long, timestamp}=
+- transform to ={%{city, street}, timestamp}=
+- transform to =%{{city, 2018-02-28-19} => count}=
+
+What could this look like?
+* The end
+Thank you for listening.
+
+Questions, comments, flames, criticisms?

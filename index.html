@@ -1844,21 +1844,21 @@ body {
 <div class="slides">
 
 <section>
-<section id="slide-org37479a3">
-<h2 id="org37479a3">ABCs of GenStage</h2>
-<div class="outline-text-2" id="text-org37479a3">
+<section id="slide-org3c774c9">
+<h2 id="org3c774c9">ABCs of GenStage</h2>
+<div class="outline-text-2" id="text-org3c774c9">
 </div>
 </section>
-<section id="slide-orgb476615">
-<h3 id="orgb476615">Wadsworth's constant</h3>
+<section id="slide-org82ded2d">
+<h3 id="org82ded2d">Wadsworth's constant</h3>
 <ul>
 <li>Aldric</li>
 <li>Exeq</li>
 
 </ul>
 </section>
-<section id="slide-org12fd193">
-<h3 id="org12fd193">Learning objectives</h3>
+<section id="slide-orgfa20b5c">
+<h3 id="orgfa20b5c">Learning objectives</h3>
 <ul>
 <li>Explain what GenStage is</li>
 <li>Decide whether or not to use GenStage</li>
@@ -1868,31 +1868,36 @@ body {
 </section>
 </section>
 <section>
-<section id="slide-org0f3db1a">
-<h2 id="org0f3db1a">Mindset: "Flow of data"</h2>
+<section id="slide-orgf68aabc">
+<h2 id="orgf68aabc">Mindset: "Flow of data"</h2>
 <p>
 And further: flow of data processing
 </p>
 </section>
 </section>
 <section>
-<section id="slide-orgdec9e1d">
-<h2 id="orgdec9e1d">The ol' <code>Stream</code></h2>
+<section id="slide-orgd39409b">
+<h2 id="orgd39409b">The ol' <code>Stream</code></h2>
 <p>
 Literally, a stream of data.
 </p>
 </section>
 </section>
 <section>
-<section id="slide-org8212a2b">
-<h2 id="org8212a2b">Distributing work with stdlib</h2>
+<section id="slide-orgdc27323">
+<h2 id="orgdc27323">Distributing work with stdlib</h2>
 <p>
 Great choice if everything is already in memory anyway.
-<code>Task.async_stream/3</code> (and <code>/5</code>)
 </p>
+
+<ul>
+<li><code>Task.async_stream/3</code></li>
+<li><code>Task.async_stream/5</code></li>
+
+</ul>
 </section>
-<section id="slide-orga465949">
-<h3 id="orga465949">One pic == 1k words</h3>
+<section id="slide-orge81e644">
+<h3 id="orge81e644">One pic == 1k words</h3>
 
 <div class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAFVCAYAAADCAXWmAAAKBmlDQ1BJQ0MgUHJvZmlsZQAASImF
@@ -2575,24 +2580,24 @@ QS8O68wpEUgEEoFBCPwHr2fFwhFnZdEAAAAASUVORK5CYII=" />
 </p>
 </div>
 </section>
-<section id="slide-orga776f5e">
-<h3 id="orga776f5e">Limitations</h3>
+<section id="slide-orgd13f2d4">
+<h3 id="orgd13f2d4">Limitations</h3>
 <ul>
 <li>Stream</li>
 <li>One function</li>
 
 </ul>
 </section>
-<section id="slide-org9ee6d34">
-<h3 id="org9ee6d34">An example</h3>
+<section id="slide-orga46a94c">
+<h3 id="orga46a94c">An example</h3>
 <p>
 Use an external reverse geocoding service to get addresses from coordinates
 </p>
 </section>
 </section>
 <section>
-<section id="slide-org7d8dabd">
-<h2 id="org7d8dabd">How can we extend this idea?</h2>
+<section id="slide-orgc49c4ab">
+<h2 id="orgc49c4ab">How can we extend this idea?</h2>
 <p>
 We want to make it scalable!
 </p>
@@ -2603,21 +2608,21 @@ The new old buzzword.
 </section>
 </section>
 <section>
-<section id="slide-org4f7a868">
-<h2 id="org4f7a868">Pub/sub</h2>
+<section id="slide-org856b0e1">
+<h2 id="org856b0e1">Pub/sub</h2>
 <p>
 Publish / subscribe
 </p>
 </section>
 </section>
 <section>
-<section id="slide-org893892e">
-<h2 id="org893892e">Setting the stage (rimshot)</h2>
+<section id="slide-org3cfe6d3">
+<h2 id="org3cfe6d3">Setting the stage (rimshot)</h2>
 </section>
 </section>
 <section>
-<section id="slide-org336d544">
-<h2 id="org336d544">Let me explain. No, there is too much. Let me sum up.</h2>
+<section id="slide-org9e2126f">
+<h2 id="org9e2126f">Let me explain. No, there is too much. Let me sum up.</h2>
 
 <div class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAe4AAAEiCAYAAAA/PTGZAAAKBWlDQ1BJQ0MgUHJvZmlsZQAASImF
@@ -3272,8 +3277,8 @@ gM+wQSAIBIEgEASOIPA/aUI54JW/SyUAAAAASUVORK5CYII=" />
 </section>
 </section>
 <section>
-<section id="slide-orgefd67ab">
-<h2 id="orgefd67ab">Backpressure</h2>
+<section id="slide-org60e8019">
+<h2 id="org60e8019">Backpressure</h2>
 <ul>
 <li>Consumers ask for data</li>
 <li>i.e. Producers produce on-demand <i>ONLY</i>.</li>
@@ -3282,120 +3287,126 @@ gM+wQSAIBIEgEASOIPA/aUI54JW/SyUAAAAASUVORK5CYII=" />
 </section>
 </section>
 <section>
-<section id="slide-org8efadbe">
-<h2 id="org8efadbe">Okay, some code now</h2>
+<section id="slide-org2ad0955">
+<h2 id="org2ad0955">Okay, some code now</h2>
 </section>
 </section>
 <section>
-<section id="slide-orgb0e5356">
-<h2 id="orgb0e5356">Empty producer</h2>
+<section id="slide-org5d4fcdf">
+<h2 id="org5d4fcdf">Empty producer</h2>
 <div class="org-src-container">
 
-<pre  class="src src-elixir"><span style="color: #597bc5;">defmodule</span> <span style="color: #fdb86b;">Producer</span> <span style="color: #597bc5;">do</span>&#57344;&#57345;&#57345;
-  <span style="color: #597bc5;">use</span> <span style="color: #fdb86b;">GenStage</span>&#57344;&#57345;&#57345;
-  <span style="color: #597bc5;">def</span> <span style="color: #f9cf80;">start_link</span>(), <span style="color: #87cefa;">do:</span> <span style="color: #fdb86b;">GenStage</span>.start_link(<span style="color: #71b9f8;">__MODULE__</span>, <span style="color: #87cefa;">:ok</span>)&#57344;&#57345;&#57345;
-&#57344;&#57345;&#57345;
-  <span style="color: #597bc5;">def</span> <span style="color: #f9cf80;">init</span>(<span style="color: #87cefa;">:ok</span>), <span style="color: #87cefa;">do:</span> {<span style="color: #87cefa;">:producer</span>, %{}}&#57344;&#57345;&#57345;
-&#57344;&#57345;&#57345;
-  <span style="color: #597bc5;">def</span> <span style="color: #f9cf80;">handle_demand</span>(demand, state) <span style="color: #597bc5;">when</span> demand &gt; 0 <span style="color: #597bc5;">do</span>&#57344;&#57345;&#57345;
-    <span style="color: #adadad; font-style: italic;"># </span><span style="color: #adadad; font-style: italic;">calculate what we can return</span>&#57344;&#57345;&#57345;
-    {events_to_produce, new_state} = magic(demand, state)&#57344;&#57345;&#57345;
-    {<span style="color: #87cefa;">:noreply</span>, events_to_produce, new_state}&#57344;&#57345;&#57345;
-  <span style="color: #597bc5;">end</span>&#57344;&#57345;&#57345;
-&#57344;&#57345;&#57345;
-  <span style="color: #597bc5;">defp</span> <span style="color: #f9cf80;">magic</span>(demand, state) <span style="color: #597bc5;">do</span>&#57344;&#57345;&#57345;
-    <span style="color: #adadad; font-style: italic;"># </span><span style="color: #adadad; font-style: italic;">Pay no attention to the man behind the curtain</span>&#57344;&#57345;&#57345;
-  <span style="color: #597bc5;">end</span>&#57344;&#57345;&#57345;
+<pre  class="src src-elixir"><span style="color: #597bc5;">defmodule</span> <span style="color: #fdb86b;">Producer</span> <span style="color: #597bc5;">do</span>
+  <span style="color: #597bc5;">use</span> <span style="color: #fdb86b;">GenStage</span>
+  <span style="color: #597bc5;">def</span> <span style="color: #f9cf80;">start_link</span>(), <span style="color: #87cefa;">do:</span> <span style="color: #fdb86b;">GenStage</span>.start_link(<span style="color: #71b9f8;">__MODULE__</span>, <span style="color: #87cefa;">:ok</span>)
+
+  <span style="color: #597bc5;">def</span> <span style="color: #f9cf80;">init</span>(<span style="color: #87cefa;">:ok</span>), <span style="color: #87cefa;">do:</span> {<span style="color: #87cefa;">:producer</span>, %{}}
+
+  <span style="color: #597bc5;">def</span> <span style="color: #f9cf80;">handle_demand</span>(demand, state) <span style="color: #597bc5;">when</span> demand &gt; 0 <span style="color: #597bc5;">do</span>
+    <span style="color: #adadad; font-style: italic;"># </span><span style="color: #adadad; font-style: italic;">calculate what we can return</span>
+    {events_to_produce, new_state} = magic(demand, state)
+    {<span style="color: #87cefa;">:noreply</span>, events_to_produce, new_state}
+  <span style="color: #597bc5;">end</span>
+
+  <span style="color: #597bc5;">defp</span> <span style="color: #f9cf80;">magic</span>(demand, state) <span style="color: #597bc5;">do</span>
+    <span style="color: #adadad; font-style: italic;"># </span><span style="color: #adadad; font-style: italic;">Pay no attention to the man behind the curtain</span>
+  <span style="color: #597bc5;">end</span>
 <span style="color: #597bc5;">end</span>
 </pre>
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgc70445c">
-<h2 id="orgc70445c">Producer-Consumer</h2>
+<section id="slide-org5886cd1">
+<h2 id="org5886cd1">Producer-Consumer</h2>
 <div class="org-src-container">
 
-<pre  class="src src-elixir"><span style="color: #597bc5;">defmodule</span> <span style="color: #fdb86b;">ProducerConsumer</span> <span style="color: #597bc5;">do</span>&#57344;&#57345;&#57345;
-  <span style="color: #597bc5;">use</span> <span style="color: #fdb86b;">GenStage</span>&#57344;&#57345;&#57345;
-  <span style="color: #597bc5;">def</span> <span style="color: #f9cf80;">start_link</span>() <span style="color: #597bc5;">do</span>&#57344;&#57345;&#57345;
-    <span style="color: #fdb86b;">GenStage</span>.start_link(<span style="color: #71b9f8;">__MODULE__</span>, <span style="color: #87cefa;">:ok</span>, <span style="color: #87cefa;">subscribe_to:</span> [<span style="color: #fdb86b;">Producer</span>])&#57344;&#57345;&#57345;
-  <span style="color: #597bc5;">end</span>&#57344;&#57345;&#57345;
-&#57344;&#57345;&#57345;
-  <span style="color: #597bc5;">def</span> <span style="color: #f9cf80;">init</span>(<span style="color: #87cefa;">:ok</span>), <span style="color: #87cefa;">do:</span> {<span style="color: #87cefa;">:producer_consumer</span>, %{}}&#57344;&#57345;&#57345;
-&#57344;&#57345;&#57345;
-  <span style="color: #597bc5;">def</span> <span style="color: #f9cf80;">handle_events</span>(events, <span style="color: #adadad; font-style: italic;">_from</span>, state) <span style="color: #597bc5;">do</span>&#57344;&#57345;&#57345;
-    <span style="color: #adadad; font-style: italic;"># </span><span style="color: #adadad; font-style: italic;">Do something with the events</span>&#57344;&#57345;&#57345;
-    <span style="color: #c6b8fc;">new_events</span> = magic(events)&#57344;&#57345;&#57345;
-    {<span style="color: #87cefa;">:noreply</span>, new_events, state}&#57344;&#57345;&#57345;
-  <span style="color: #597bc5;">end</span>&#57344;&#57345;&#57345;
-&#57344;&#57345;&#57345;
-  <span style="color: #597bc5;">defp</span> <span style="color: #f9cf80;">magic</span>(events) <span style="color: #597bc5;">do</span>&#57344;&#57345;&#57345;
-    <span style="color: #adadad; font-style: italic;"># </span><span style="color: #adadad; font-style: italic;">Pay no attention to the man behind the curtain</span>&#57344;&#57345;&#57345;
-  <span style="color: #597bc5;">end</span>&#57344;&#57345;&#57345;
+<pre  class="src src-elixir"><span style="color: #597bc5;">defmodule</span> <span style="color: #fdb86b;">ProducerConsumer</span> <span style="color: #597bc5;">do</span>
+  <span style="color: #597bc5;">use</span> <span style="color: #fdb86b;">GenStage</span>
+  <span style="color: #597bc5;">def</span> <span style="color: #f9cf80;">start_link</span>() <span style="color: #597bc5;">do</span>
+    <span style="color: #fdb86b;">GenStage</span>.start_link(
+      <span style="color: #71b9f8;">__MODULE__</span>,
+      <span style="color: #87cefa;">:ok</span>,
+      <span style="color: #87cefa;">subscribe_to:</span> [<span style="color: #fdb86b;">Producer</span>])
+  <span style="color: #597bc5;">end</span>
+
+  <span style="color: #597bc5;">def</span> <span style="color: #f9cf80;">init</span>(<span style="color: #87cefa;">:ok</span>), <span style="color: #87cefa;">do:</span> {<span style="color: #87cefa;">:producer_consumer</span>, %{}}
+
+  <span style="color: #597bc5;">def</span> <span style="color: #f9cf80;">handle_events</span>(events, <span style="color: #adadad; font-style: italic;">_from</span>, state) <span style="color: #597bc5;">do</span>
+    <span style="color: #adadad; font-style: italic;"># </span><span style="color: #adadad; font-style: italic;">Do something with the events</span>
+    <span style="color: #c6b8fc;">new_events</span> = magic(events)
+    {<span style="color: #87cefa;">:noreply</span>, new_events, state}
+  <span style="color: #597bc5;">end</span>
+
+  <span style="color: #597bc5;">defp</span> <span style="color: #f9cf80;">magic</span>(events) <span style="color: #597bc5;">do</span>
+    <span style="color: #adadad; font-style: italic;"># </span><span style="color: #adadad; font-style: italic;">Pay no attention to the man behind the curtain</span>
+  <span style="color: #597bc5;">end</span>
 <span style="color: #597bc5;">end</span>
 </pre>
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgefc9cb8">
-<h2 id="orgefc9cb8">Consumer</h2>
+<section id="slide-org4ccd7ff">
+<h2 id="org4ccd7ff">Consumer</h2>
 <div class="org-src-container">
 
-<pre  class="src src-elixir"><span style="color: #597bc5;">defmodule</span> <span style="color: #fdb86b;">Consumer</span> <span style="color: #597bc5;">do</span>&#57344;&#57345;&#57345;
-  <span style="color: #597bc5;">use</span> <span style="color: #fdb86b;">GenStage</span>&#57344;&#57345;&#57345;
-  <span style="color: #597bc5;">def</span> <span style="color: #f9cf80;">start_link</span>() <span style="color: #597bc5;">do</span>&#57344;&#57345;&#57345;
-    <span style="color: #fdb86b;">GenStage</span>.start_link(<span style="color: #71b9f8;">__MODULE__</span>, <span style="color: #87cefa;">:ok</span>, <span style="color: #87cefa;">subscribe_to:</span> [<span style="color: #fdb86b;">ProducerConsumer</span>])&#57344;&#57345;&#57345;
-  <span style="color: #597bc5;">end</span>&#57344;&#57345;&#57345;
-&#57344;&#57345;&#57345;
-  <span style="color: #597bc5;">def</span> <span style="color: #f9cf80;">init</span>(<span style="color: #87cefa;">:ok</span>), <span style="color: #87cefa;">do:</span> {<span style="color: #87cefa;">:consumer</span>, <span style="color: #87cefa;">:something_has_to_be_the_state</span>}&#57344;&#57345;&#57345;
-&#57344;&#57345;&#57345;
-  <span style="color: #597bc5;">def</span> <span style="color: #f9cf80;">handle_events</span>(events, <span style="color: #adadad; font-style: italic;">_from</span>, state) <span style="color: #597bc5;">do</span>&#57344;&#57345;&#57345;
-    <span style="color: #adadad; font-style: italic;"># </span><span style="color: #adadad; font-style: italic;">Do something with the events</span>&#57344;&#57345;&#57345;
-    <span style="color: #adadad; font-style: italic;">_final_step</span> = magic(events)&#57344;&#57345;&#57345;
-    <span style="color: #adadad; font-style: italic;"># </span><span style="color: #adadad; font-style: italic;">Have to return an empty list</span>&#57344;&#57345;&#57345;
-    {<span style="color: #87cefa;">:noreply</span>, [], state}&#57344;&#57345;&#57345;
-  <span style="color: #597bc5;">end</span>&#57344;&#57345;&#57345;
-&#57344;&#57345;&#57345;
-  <span style="color: #597bc5;">defp</span> <span style="color: #f9cf80;">magic</span>(events) <span style="color: #597bc5;">do</span>&#57344;&#57345;&#57345;
-    <span style="color: #adadad; font-style: italic;"># </span><span style="color: #adadad; font-style: italic;">Pay no attention to the man behind the curtain</span>&#57344;&#57345;&#57345;
+<pre  class="src src-elixir"><span style="color: #597bc5;">defmodule</span> <span style="color: #fdb86b;">Consumer</span> <span style="color: #597bc5;">do</span>
+  <span style="color: #597bc5;">use</span> <span style="color: #fdb86b;">GenStage</span>
+  <span style="color: #597bc5;">def</span> <span style="color: #f9cf80;">start_link</span>() <span style="color: #597bc5;">do</span>
+    <span style="color: #fdb86b;">GenStage</span>.start_link(
+      <span style="color: #71b9f8;">__MODULE__</span>,
+      <span style="color: #87cefa;">:ok</span>,
+      <span style="color: #87cefa;">subscribe_to:</span> [<span style="color: #fdb86b;">ProducerConsumer</span>])
+  <span style="color: #597bc5;">end</span>
+
+  <span style="color: #597bc5;">def</span> <span style="color: #f9cf80;">init</span>(<span style="color: #87cefa;">:ok</span>), <span style="color: #87cefa;">do:</span> {<span style="color: #87cefa;">:consumer</span>, <span style="color: #87cefa;">:something_has_to_be_the_state</span>}
+
+  <span style="color: #597bc5;">def</span> <span style="color: #f9cf80;">handle_events</span>(events, <span style="color: #adadad; font-style: italic;">_from</span>, state) <span style="color: #597bc5;">do</span>
+    <span style="color: #adadad; font-style: italic;"># </span><span style="color: #adadad; font-style: italic;">Do something with the events</span>
+    <span style="color: #adadad; font-style: italic;">_final_step</span> = magic(events)
+    <span style="color: #adadad; font-style: italic;"># </span><span style="color: #adadad; font-style: italic;">Have to return an empty list</span>
+    {<span style="color: #87cefa;">:noreply</span>, [], state}
+  <span style="color: #597bc5;">end</span>
+
+  <span style="color: #597bc5;">defp</span> <span style="color: #f9cf80;">magic</span>(events) <span style="color: #597bc5;">do</span>
+    <span style="color: #adadad; font-style: italic;"># </span><span style="color: #adadad; font-style: italic;">Pay no attention to the man behind the curtain</span>
   <span style="color: #597bc5;">end</span>
 </pre>
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org83dcd29">
-<h2 id="org83dcd29">Pitfall: callbacks</h2>
+<section id="slide-org31ad53a">
+<h2 id="org31ad53a">Pitfall: callbacks</h2>
 <p>
 All regular runtime callbacks return new events.
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-elixir"><span style="color: #597bc5;">def</span> <span style="color: #f9cf80;">handle_cast</span>(msg, state) <span style="color: #597bc5;">do</span>&#57344;&#57345;&#57345;
-  <span style="color: #adadad; font-style: italic;"># </span><span style="color: #adadad; font-style: italic;">something</span>&#57344;&#57345;&#57345;
-  {<span style="color: #87cefa;">:noreply</span>, new_events, state}&#57344;&#57345;&#57345;
-<span style="color: #597bc5;">end</span>&#57344;&#57345;&#57345;
-&#57344;&#57345;&#57345;
-<span style="color: #597bc5;">def</span> <span style="color: #f9cf80;">handle_call</span>(msg, from, state) <span style="color: #597bc5;">do</span>&#57344;&#57345;&#57345;
-  <span style="color: #adadad; font-style: italic;"># </span><span style="color: #adadad; font-style: italic;">something</span>&#57344;&#57345;&#57345;
-  {<span style="color: #87cefa;">:reply</span>, reply, new_events, state}&#57344;&#57345;&#57345;
+<pre  class="src src-elixir"><span style="color: #597bc5;">def</span> <span style="color: #f9cf80;">handle_cast</span>(msg, state) <span style="color: #597bc5;">do</span>
+  <span style="color: #adadad; font-style: italic;"># </span><span style="color: #adadad; font-style: italic;">something</span>
+  {<span style="color: #87cefa;">:noreply</span>, new_events, state}
+<span style="color: #597bc5;">end</span>
+
+<span style="color: #597bc5;">def</span> <span style="color: #f9cf80;">handle_call</span>(msg, from, state) <span style="color: #597bc5;">do</span>
+  <span style="color: #adadad; font-style: italic;"># </span><span style="color: #adadad; font-style: italic;">something</span>
+  {<span style="color: #87cefa;">:reply</span>, reply, new_events, state}
 <span style="color: #597bc5;">end</span>
 </pre>
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgf5145d7">
-<h2 id="orgf5145d7">The devil is in the details</h2>
+<section id="slide-orgc6b90f7">
+<h2 id="orgc6b90f7">The devil is in the details</h2>
 </section>
 </section>
 <section>
-<section id="slide-org6d588a7">
-<h2 id="org6d588a7">Dispatchers</h2>
+<section id="slide-orgb2683b9">
+<h2 id="orgb2683b9">Dispatchers</h2>
 <p>
-How the producer knows what to do
+How the producer knows what to do. Can create your own.
 </p>
 
 <p>
@@ -3405,33 +3416,32 @@ Built-in:
 <li>broadcast (send to all)</li>
 <li>demand (send to highest demand)</li>
 <li>partition (send to partitions)</li>
-<li>can create your own</li>
 
 </ul>
 </section>
 </section>
 <section>
-<section id="slide-orgc7daa91">
-<h2 id="orgc7daa91">Demand</h2>
+<section id="slide-org90268cd">
+<h2 id="org90268cd">Demand</h2>
 <p>
 <code>:max_demand</code> and <code>:min_demand</code>
 </p>
 </section>
 </section>
 <section>
-<section id="slide-org9edb835">
-<h2 id="org9edb835">Automatic vs. manual demand</h2>
-<div class="outline-text-2" id="text-org9edb835">
+<section id="slide-org0fcbd67">
+<h2 id="org0fcbd67">Automatic vs. manual demand</h2>
+<div class="outline-text-2" id="text-org0fcbd67">
 </div>
 </section>
-<section id="slide-org4c9ad7c">
-<h3 id="org4c9ad7c">Automatic</h3>
+<section id="slide-org26aae1d">
+<h3 id="org26aae1d">Automatic</h3>
 <p>
 Default behavior
 </p>
 </section>
-<section id="slide-org4e1eabd">
-<h3 id="org4e1eabd">Manual</h3>
+<section id="slide-org622b085">
+<h3 id="org622b085">Manual</h3>
 <p>
 <code>GenStage.handle_subscribe/4</code> returns <code>{:manual, state}</code>
 </p>
@@ -3442,8 +3452,8 @@ Trigger more demand with <code>GenStage.ask/4</code>
 </section>
 </section>
 <section>
-<section id="slide-org0eecf2a">
-<h2 id="org0eecf2a">ConsumerSupervisor</h2>
+<section id="slide-org66b0733">
+<h2 id="org66b0733">ConsumerSupervisor</h2>
 <p>
 Similar to <code>async_stream</code>, but for GenStage
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAdIAAAEqCAYAAAChodFCAAAKBWlDQ1BJQ0MgUHJvZmlsZQAASImF
@@ -3918,6 +3928,51 @@ CNRAQIS0Bhz6IASEgBAQAkIgGgIipNHw0tVCQAgIASEgBGogIEJaAw59EAJCQAgIASEQDQER0mh4
 6WohIASEgBAQAjUQECGtAYc+CAEhIASEgBCIhoAIaTS8dLUQEAJCQAgIgRoIiJDWgEMfhIAQEAJC
 QAhEQ0CENBpeuloICAEhIASEQA0EREhrwKEPQkAICAEhIASiISBCGg0vXS0EhIAQEAJCoAYCIqQ1
 4NAHISAEhIAQEALREPj/H8SDqND/2iwAAAAASUVORK5CYII=" />
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgdb2b581">
+<h2 id="orgdb2b581">Usage considerations</h2>
+<blockquote nil>
+<p>
+As you get familiar with GenStage, you may want to organize your stages according to your business domain. [...] That’s an anti-pattern.
+</p>
+
+<p>
+[...]
+</p>
+
+<p>
+[U]se processes/stages to model runtime properties, such as concurrency and data-transfer.
+</p>
+</blockquote>
+</section>
+</section>
+<section>
+<section id="slide-org58bc5f1">
+<h2 id="org58bc5f1">Pipeline example</h2>
+<ul>
+<li>produce <code>{lat, long, timestamp}</code></li>
+<li>transform to <code>{%{city, street}, timestamp}</code></li>
+<li>transform to <code>%{{city, 2018-02-28-19} =&gt; count}</code></li>
+
+</ul>
+
+<p>
+What could this look like?
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgbda5e39">
+<h2 id="orgbda5e39">The end</h2>
+<p>
+Thank you for listening.
+</p>
+
+<p>
+Questions, comments, flames, criticisms?
 </p>
 </section>
 </section>
